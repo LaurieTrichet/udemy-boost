@@ -24,36 +24,31 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        var rotation = Vector3.Scale( rotationStep, cachedMovement);
+        var rotation = Vector3.Scale(rotationStep, cachedMovement);
 
         Rotate(rotation * Time.fixedDeltaTime * speed);
     }
 
     public void OnMove(InputAction.CallbackContext callbackContext)
     {
-        //if (callbackContext.phase == InputActionPhase.Performed)
-        
-            var inputVector = callbackContext.ReadValue<Vector2>();
-            var direction = inputVector.x;
+        var inputVector = callbackContext.ReadValue<Vector2>();
+        var direction = inputVector.x;
         Debug.Log(inputVector.x);
-            cachedMovement = Vector3.forward * direction;
-        
-
-        Debug.Log(cachedMovement);
+        cachedMovement = Vector3.forward * direction;
     }
 
     public void OnFire(InputAction.CallbackContext callbackContext)
     {
-        var force = playerRigidBody.rotation * Vector3.up * thursters;
-        
-        playerRigidBody.AddForce(force, ForceMode.Impulse);
+        var force = Vector3.up * thursters;
+
+        playerRigidBody.AddRelativeForce(force, ForceMode.Impulse);
     }
 
 
     private void Rotate(Vector3 rotation)
     {
         Quaternion offsetRotation = Quaternion.Euler(rotation);
-        Quaternion futurRotation =  playerRigidBody.rotation * offsetRotation;
+        Quaternion futurRotation = playerRigidBody.rotation * offsetRotation;
         playerRigidBody.MoveRotation(futurRotation);
 
     }
