@@ -17,10 +17,13 @@ public class Movement : MonoBehaviour
     private Vector3 force;
     private bool shouldApplyForce;
 
+    private AudioSource audioSource = null;
+
     // Start is called before the first frame update
     void Start()
     {
         playerRigidBody = GetComponent<Rigidbody>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -48,8 +51,29 @@ public class Movement : MonoBehaviour
         Debug.Log(callbackContext);
         force = Vector3.up * thursters;
         shouldApplyForce = callbackContext.performed;
+        if (callbackContext.canceled)
+        {
+            CancelSFX();
+        }
+        PlaySFX();
     }
 
+    private void PlaySFX()
+    {
+        if (shouldApplyForce)
+        {
+            if (!audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
+        }
+    }
+
+
+    private void CancelSFX()
+    {
+        audioSource.Stop();
+    }
 
     private void Rotate(Vector3 rotation)
     {
