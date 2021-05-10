@@ -11,7 +11,7 @@ public class Movement : MonoBehaviour
     private Rigidbody playerRigidBody;
 
     public float thursters = 10;
-    public float speed = 10;
+    public float rotationSpeed = 10;
 
     public Vector3 rotationStep = new Vector3(0, 0, 5);
     private Vector3 force;
@@ -28,17 +28,17 @@ public class Movement : MonoBehaviour
     {
         var rotation = Vector3.Scale(rotationStep, cachedMovement);
 
-        Rotate(rotation * Time.fixedDeltaTime * speed);
+        Rotate(rotation * Time.fixedDeltaTime * rotationSpeed);
         if (shouldApplyForce)
         {
-            playerRigidBody.AddRelativeForce(force);
+            playerRigidBody.AddRelativeForce(force * Time.deltaTime);
         }
     }
 
     public void OnMove(InputAction.CallbackContext callbackContext)
     {
         var inputVector = callbackContext.ReadValue<Vector2>();
-        var direction = inputVector.x;
+        var direction = -1 * inputVector.x;
         Debug.Log(inputVector.x);
         cachedMovement = Vector3.forward * direction;
     }
@@ -48,7 +48,6 @@ public class Movement : MonoBehaviour
         Debug.Log(callbackContext);
         force = Vector3.up * thursters;
         shouldApplyForce = callbackContext.performed;
-        //playerRigidBody.AddRelativeForce(force, ForceMode.Impulse);
     }
 
 
