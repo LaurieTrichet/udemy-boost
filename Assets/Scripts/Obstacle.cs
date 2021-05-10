@@ -25,9 +25,8 @@ public class Obstacle : MonoBehaviour
         {
             gameState.IsTransitioning = true;
             var targetTransform = movement.gameObject.transform;
-            gameState.ShowExplosionParticle(targetTransform);
+            gameState.ShowExplosionParticles(targetTransform);
             movement.enabled = false;
-            Debug.Log("play explosion");
             audioSource.Play();
             StartCoroutine(ReloadScene());
         }

@@ -6,15 +6,28 @@ using UnityEngine;
 public class GameStateSO : ScriptableObject
 {
 
-    [SerializeField] bool isTransitioning = false;
+    public bool isTransitioning = false;
 
-    [SerializeField] GameObject explosionParticle = null;
+    public GameObject explosionParticle = null;
+
+    public GameObject successParticle = null;
 
     public bool IsTransitioning { get => isTransitioning; set => isTransitioning = value; }
 
-    public void ShowExplosionParticle(Transform targetTransform)
+    public void ShowExplosionParticles(Transform targetTransform)
     {
-        Debug.Log("show explosion particle" + targetTransform.position);
-        Instantiate(explosionParticle, targetTransform, false);
+        ShowParticleAtPoint(explosionParticle, targetTransform);
+    }    
+    
+    public void ShowSuccessParticles(Transform targetTransform)
+    {
+        ShowParticleAtPoint(successParticle, targetTransform);
+    }    
+    
+    public void ShowParticleAtPoint(GameObject particlesPrefab, Transform targetTransform)
+    {
+        var particles = Instantiate(particlesPrefab, targetTransform, false);
+        var ps = particles.GetComponent<ParticleSystem>();
+        ps.Play();
     }
 }

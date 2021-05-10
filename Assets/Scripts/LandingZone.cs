@@ -26,6 +26,7 @@ public class LandingZone : MonoBehaviour
             gameState.IsTransitioning = true;
             if (LayerHelper.AreLayerMatching(collision.gameObject.layer, "Player"))
             {
+                gameState.ShowSuccessParticles(movement.gameObject.transform);
                 audioSource.Play();
                 movement.enabled = false;
                 StartCoroutine(GoToNextScene());
