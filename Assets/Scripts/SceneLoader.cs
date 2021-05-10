@@ -14,7 +14,7 @@ public class SceneLoader : MonoBehaviour
 
     internal void GoToNextScene()
     {
-        int buildIndex = (SceneManager.GetActiveScene().buildIndex + 1) % SceneManager.sceneCount;
+        int buildIndex = (SceneManager.GetActiveScene().buildIndex + 1) % SceneManager.sceneCountInBuildSettings;
         SceneManager.LoadScene(buildIndex);
     }
 }
