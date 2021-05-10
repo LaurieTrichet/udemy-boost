@@ -6,6 +6,14 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
+    [SerializeField] GameStateSO gameState = null;
+
+
+    private void Awake()
+    {
+        gameState.IsTransitioning = false;
+    }
+
     public void ReloadScene()
     {
         int buildIndex = SceneManager.GetActiveScene().buildIndex;
@@ -16,5 +24,6 @@ public class SceneLoader : MonoBehaviour
     {
         int buildIndex = (SceneManager.GetActiveScene().buildIndex + 1) % SceneManager.sceneCountInBuildSettings;
         SceneManager.LoadScene(buildIndex);
-    }
+    }   
+
 }

@@ -42,20 +42,23 @@ public class Movement : MonoBehaviour
     {
         var inputVector = callbackContext.ReadValue<Vector2>();
         var direction = -1 * inputVector.x;
-        Debug.Log(inputVector.x);
+        //Debug.Log(inputVector.x);
         cachedMovement = Vector3.forward * direction;
     }
 
     public void OnFire(InputAction.CallbackContext callbackContext)
     {
-        Debug.Log(callbackContext);
+        //Debug.Log(callbackContext);
         force = Vector3.up * thursters;
         shouldApplyForce = callbackContext.performed;
         if (callbackContext.canceled)
         {
             CancelSFX();
+                Debug.Log("cancel audio");
+        } else
+        {
+            PlaySFX();
         }
-        PlaySFX();
     }
 
     private void PlaySFX()
@@ -64,6 +67,7 @@ public class Movement : MonoBehaviour
         {
             if (!audioSource.isPlaying)
             {
+                Debug.Log("play audio");
                 audioSource.Play();
             }
         }

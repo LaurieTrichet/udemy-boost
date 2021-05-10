@@ -7,20 +7,29 @@ public class LandingZone : MonoBehaviour
 
     private SceneLoader sceneLoader;
     private Movement movement;
+    private AudioSource audioSource;
+
+    [SerializeField] GameStateSO gameState = null;
+
 
     private void Start()
     {
         sceneLoader = FindObjectOfType<SceneLoader>();
         movement = FindObjectOfType<Movement>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (LayerHelper.AreLayerMatching(collision.gameObject.layer, "Player"))
+        if (!gameState.IsTransitioning)
         {
-            
-            movement.enabled = false;
-            StartCoroutine(GoToNextScene());
+            gameState.IsTransitioning = true;
+            if (LayerHelper.AreLayerMatching(collision.gameObject.layer, "Player"))
+            {
+                audioSource.Play();
+                movement.enabled = false;
+                StartCoroutine(GoToNextScene());
+            }
         }
     }
 
