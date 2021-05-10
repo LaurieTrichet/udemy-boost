@@ -415,6 +415,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 547462905148696515, guid: caf3dde735c45e6499b109ef7f255778, type: 3}
+      propertyPath: m_Drag
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 547462905148696515, guid: caf3dde735c45e6499b109ef7f255778, type: 3}
+      propertyPath: m_Mass
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 547462905148696515, guid: caf3dde735c45e6499b109ef7f255778, type: 3}
+      propertyPath: m_Constraints
+      value: 104
+      objectReference: {fileID: 0}
+    - target: {fileID: 547462905148696515, guid: caf3dde735c45e6499b109ef7f255778, type: 3}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 547462905148696515, guid: caf3dde735c45e6499b109ef7f255778, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 547462905148696520, guid: caf3dde735c45e6499b109ef7f255778, type: 3}
+      propertyPath: thursters
+      value: 25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: caf3dde735c45e6499b109ef7f255778, type: 3}
 --- !u!1001 &3600459414482108649

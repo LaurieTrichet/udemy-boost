@@ -14,6 +14,8 @@ public class Movement : MonoBehaviour
     public float speed = 10;
 
     public Vector3 rotationStep = new Vector3(0, 0, 5);
+    private Vector3 force;
+    private bool shouldApplyForce;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +29,10 @@ public class Movement : MonoBehaviour
         var rotation = Vector3.Scale(rotationStep, cachedMovement);
 
         Rotate(rotation * Time.fixedDeltaTime * speed);
+        if (shouldApplyForce)
+        {
+            playerRigidBody.AddRelativeForce(force);
+        }
     }
 
     public void OnMove(InputAction.CallbackContext callbackContext)
@@ -39,9 +45,10 @@ public class Movement : MonoBehaviour
 
     public void OnFire(InputAction.CallbackContext callbackContext)
     {
-        var force = Vector3.up * thursters;
-
-        playerRigidBody.AddRelativeForce(force, ForceMode.Impulse);
+        Debug.Log(callbackContext);
+        force = Vector3.up * thursters;
+        shouldApplyForce = callbackContext.performed;
+        //playerRigidBody.AddRelativeForce(force, ForceMode.Impulse);
     }
 
 
