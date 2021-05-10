@@ -24,12 +24,15 @@ public class Obstacle : MonoBehaviour
         if (!gameState.IsTransitioning)
         {
             gameState.IsTransitioning = true;
+            var targetTransform = movement.gameObject.transform;
+            gameState.ShowExplosionParticle(targetTransform);
             movement.enabled = false;
             Debug.Log("play explosion");
             audioSource.Play();
             StartCoroutine(ReloadScene());
         }
     }
+
 
     IEnumerator ReloadScene()
     {

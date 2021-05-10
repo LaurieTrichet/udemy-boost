@@ -12,3 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a6021d935c384346a0fc62c540a46ea, type: 3}
   m_Name: GameState
   m_EditorClassIdentifier: 
+  isTransitioning: 0
+  explosionParticle: {fileID: 1469142659871422, guid: ab79a37535b979f48b6de56e3a0a5cb0, type: 3}
