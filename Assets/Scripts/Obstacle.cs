@@ -21,7 +21,7 @@ public class Obstacle : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (!gameState.IsTransitioning)
+        if (!gameState.IsTransitioning && !gameState.SkipCollisions)
         {
             gameState.IsTransitioning = true;
             var targetTransform = movement.gameObject.transform;

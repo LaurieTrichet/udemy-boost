@@ -23,11 +23,18 @@ public class Movement : MonoBehaviour
 
     private AudioSource audioSource = null;
 
+    private SceneLoader sceneLoader = null;
+    private BoxCollider boxCollider = null;
+
+    [SerializeField] GameStateSO gameState = null;
+
     // Start is called before the first frame update
     void Start()
     {
         playerRigidBody = GetComponent<Rigidbody>();
         audioSource = GetComponent<AudioSource>();
+        sceneLoader = FindObjectOfType<SceneLoader>();
+        boxCollider = FindObjectOfType<BoxCollider>();        
     }
 
     // Update is called once per frame
@@ -51,10 +58,24 @@ public class Movement : MonoBehaviour
         {
             rightThruster.Stop();
             leftThruster.Stop();
-
         }
     }
 
+    public void OnGoToNextLevel(InputAction.CallbackContext callbackContext)
+    {
+        if (callbackContext.performed)
+        {
+            sceneLoader.GoToNextScene();
+        }
+    }    
+    
+    public void OnToggleCollision(InputAction.CallbackContext callbackContext)
+    {
+        if (callbackContext.performed)
+        {
+            gameState.SkipCollisions = !gameState.SkipCollisions;
+        }
+    }    
     public void OnMove(InputAction.CallbackContext callbackContext)
     {
         var inputVector = callbackContext.ReadValue<Vector2>();

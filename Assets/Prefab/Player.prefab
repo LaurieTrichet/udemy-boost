@@ -159,6 +159,38 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 28553149-dda5-4703-a735-5512b20c2fe8
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 547462905148696520}
+        m_TargetAssemblyTypeName: Movement, Assembly-CSharp
+        m_MethodName: OnToggleCollision
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 1a996898-587b-4dca-b709-cd773e9016a9
+    m_ActionName: Player/ToggleCollision[/Keyboard/c]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 547462905148696520}
+        m_TargetAssemblyTypeName: Movement, Assembly-CSharp
+        m_MethodName: OnGoToNextLevel
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: f1a688f9-cb5a-4cc8-a64c-6478717f2911
+    m_ActionName: Player/GoToNextLevel[/Keyboard/l]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player
@@ -182,6 +214,7 @@ MonoBehaviour:
   leftThruster: {fileID: 4904978536438736209}
   rightThruster: {fileID: 8750064376707471879}
   mainThruster: {fileID: 5757396111855742600}
+  gameState: {fileID: 11400000, guid: 59e0f4d20b897824e8d935a3520fa920, type: 2}
 --- !u!82 &1562202250
 AudioSource:
   m_ObjectHideFlags: 0

@@ -3,7 +3,11 @@ guid: 189b4bf9c65b8f04eb5b674cc505d311
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - leftThruster: {instanceID: 0}
+  - rightThruster: {instanceID: 0}
+  - mainThruster: {instanceID: 0}
+  - gameState: {fileID: 11400000, guid: 59e0f4d20b897824e8d935a3520fa920, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
