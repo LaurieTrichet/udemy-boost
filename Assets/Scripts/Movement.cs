@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class Movement : MonoBehaviour
 {
-
+    private float direction;
     private Vector3 cachedMovement;
 
     private Rigidbody playerRigidBody;
@@ -16,6 +16,10 @@ public class Movement : MonoBehaviour
     public Vector3 rotationStep = new Vector3(0, 0, 5);
     private Vector3 force;
     private bool shouldApplyForce;
+
+    [SerializeField] ParticleSystem leftThruster = null;
+    [SerializeField] ParticleSystem rightThruster = null;
+    [SerializeField] ParticleSystem mainThruster = null;
 
     private AudioSource audioSource = null;
 
@@ -34,14 +38,27 @@ public class Movement : MonoBehaviour
         Rotate(rotation * Time.fixedDeltaTime * rotationSpeed);
         if (shouldApplyForce)
         {
+            if(direction == -1)
+            {
+                leftThruster.Play();
+            }
+            else if (direction == 1)
+            {
+                rightThruster.Play();
+            }
             playerRigidBody.AddRelativeForce(force * Time.deltaTime);
+        } else
+        {
+            rightThruster.Stop();
+            leftThruster.Stop();
+
         }
     }
 
     public void OnMove(InputAction.CallbackContext callbackContext)
     {
         var inputVector = callbackContext.ReadValue<Vector2>();
-        var direction = -1 * inputVector.x;
+        direction = -1 * inputVector.x;
         //Debug.Log(inputVector.x);
         cachedMovement = Vector3.forward * direction;
     }
@@ -54,9 +71,11 @@ public class Movement : MonoBehaviour
         if (callbackContext.canceled)
         {
             CancelSFX();
-                Debug.Log("cancel audio");
+            mainThruster.Stop();
+            //Debug.Log("cancel audio");
         } else
         {
+            mainThruster.Play();
             PlaySFX();
         }
     }
