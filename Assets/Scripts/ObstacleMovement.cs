@@ -22,8 +22,6 @@ public class ObstacleMovement : MonoBehaviour
         ComputeOffset();
         min = startingPosition - offset;
         max = startingPosition + offset;
-        Debug.Log(min);
-        Debug.Log(max);
 
         tau = Mathf.PI * 2;
     }
@@ -47,6 +45,5 @@ public class ObstacleMovement : MonoBehaviour
         var rawSinWave = Mathf.Sin(cycles * tau); // Get x for the cycles number * radians in a circles
         var movementFactor = (rawSinWave + 1f) / 2f; // move the interval from 0 to period instead of [-1;1]
         offset = movementVector *  movementFactor;
-        Debug.Log(offset);
     }
 }

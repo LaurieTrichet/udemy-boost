@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
@@ -24,6 +25,14 @@ public class SceneLoader : MonoBehaviour
     {
         int buildIndex = (SceneManager.GetActiveScene().buildIndex + 1) % SceneManager.sceneCountInBuildSettings;
         SceneManager.LoadScene(buildIndex);
-    }   
+    }
+
+    public void QuitGame(InputAction.CallbackContext callbackContext)
+    {
+        if (callbackContext.performed)
+        {
+            Application.Quit();
+        }
+    }
 
 }

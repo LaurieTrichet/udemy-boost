@@ -44,6 +44,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "QuitTheGame",
+                    "type": "Button",
+                    "id": "cb34291d-0b69-46bd-be6b-80c3f771255e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -297,6 +305,17 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "GoToNextLevel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c25bcb8b-f570-4a5e-992d-ca72589241ea",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "QuitTheGame",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
